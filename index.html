@@ -123,9 +123,8 @@
 
 			const PRESENT_NEWS = 1
 
-			const VTAG_NEWS = "news#"
-
-			const CTAG_NEWS = "seen_news="
+			const ETAG_NEWS = "news#"
+			const STAG_NEWS = "seen_news"
 
 			const email_name = "beroachstudios";
 			const email_domain = "gmail.com";
@@ -134,18 +133,16 @@
 
 	        document.addEventListener('DOMContentLoaded', function() {
 
-				seen_news = parseInt(document.cookie.slice(CTAG_NEWS.length))
+				seen_news = parseInt(localStorage.getItem(STAG_NEWS))
 				if (Number.isNaN(seen_news)){ seen_news = 0; }
 
 				for (let i = seen_news+1; i <= PRESENT_NEWS; i++) {
-					const element = document.getElementById(`${VTAG_NEWS}${i}`);
+					const element = document.getElementById(`${ETAG_NEWS}${i}`);
 					if (element !== null) { element.classList.add('newsbox_new'); }
 				}
-			});
 
-        	window.addEventListener('unload', function(event) {
-			document.cookie = `${CTAG_NEWS}${PRESENT_NEWS}`;
-        	});
+				localStorage.setItem(STAG_NEWS, PRESENT_NEWS)
+			});
 
 
 		</script>
