@@ -1,14 +1,154 @@
 <!DOCTYPE html>
+
+
+
 <html>
 
-	<title> The official website for Beroach Studios </title>
+	<title> Beroach Studios </title>
 
 	<head>
-		<h1> We've got the domain!! </h1>
+
+		<style>
+			body {
+      	    place-items: center;
+			background-color: rgb(0, 100, 100);
+			}
+
+			h1 {
+			font-size: 60px;
+		    margin-bottom: 5px;
+			}
+
+			.header {
+			margin-bottom: 100px;
+    		text-align: center;
+			}
+
+
+			.subtitle {
+			margin-top: 0px;
+			font-size: 24px;
+		    letter-spacing: 7px;
+			font-style: italic;
+			}
+
+			.newsbox {
+
+			font-size: 18px;
+		    width: 60%;
+			margin: 0 auto;
+			margin-bottom: 50px;
+
+			border-style: solid;
+			border-width: 3px;
+			border-color: rgb(0, 60, 50);
+
+			.newsheader {
+			padding: 12px;
+
+ 			display: flex;
+ 			justify-content: space-between;
+			font-size: 20px;
+			background-color: rgb(0, 140, 110);
+
+			.newstitle { font-weight: bold; }
+			.newsdate { font-style: italic; }
+
+			}
+
+			.newscontent {
+				padding: 8px;
+				padding-left: 10%;
+				background-color: rgb(0, 160, 130);
+			}
+
+			}
+			
+			.newsbox_new {
+
+				border-color: rgb(200, 60, 50);
+
+				.newsheader {
+					background-color: rgb(150, 140, 110);
+					.newstitle { font-style: italic; }
+				}
+				.newscontent {
+					background-color: rgb(150, 160, 130);
+				}
+			}
+
+		</style>
+
 	</head>
 
-
 	<body>
+
+		<div class = "header">
+		<h1> Beroach Studios </h1>
+		<p class="subtitle"> games born in rise of starlight </p>
+		</div>
+
+
+		<div class = "newsbox", id = "news#1">
+			<div class = newsheader>
+				<div class = newstitle> The release of ... ? </div>
+				<div class = newsdate> 05.01.2025 | 05:30 PM UTC </div>
+			</div>
+
+			<div class = newscontent>
+				As of now, we do not yet have a particular game project in mind, though the debut is planned
+				between July and September of this year. The game will likely feature tower defense game elements.
+				If you would like to attempt contributing in any way at all, for example in:
+				<ul>
+					<li> Programming </li>
+					<li> Networking </li>
+					<li> Graphics art </li>
+					<li> Animations </li>
+					<li> Music </li>
+					<li> Sound effects </li>
+					<li> Writing </li>
+					<li> Website design </li>
+					<li> Financial advice </li>
+					<li> Advertisement </li>
+					<li> Moderation </li>
+					<li> Community </li>
+					<li> Beta testing </li>
+				</ul>
+				you are encouraged to E-mail us at <span id="email_beroachstudios"></span>!
+				Your commitment may earn you a cut (details are to be discussed beforehand)
+			</div>
+		</div>
+
+		<script>
+
+			const PRESENT_NEWS = 1
+
+			const VTAG_NEWS = "news#"
+
+			const CTAG_NEWS = "seen_news="
+
+			const email_name = "beroachstudios";
+			const email_domain = "gmail.com";
+			const email_email = `${email_name}@${email_domain}`;
+			document.getElementById("email_beroachstudios").innerHTML = `<a href="mailto:${email_email}">${email_email}</a>`;
+
+	        document.addEventListener('DOMContentLoaded', function() {
+
+				seen_news = parseInt(document.cookie.slice(CTAG_NEWS.length))
+				if (Number.isNaN(seen_news)){ seen_news = 0; }
+
+				for (let i = seen_news+1; i <= PRESENT_NEWS; i++) {
+					const element = document.getElementById(`${VTAG_NEWS}${i}`);
+					if (element !== null) { element.classList.add('newsbox_new'); }
+				}
+			});
+
+        	window.addEventListener('unload', function(event) {
+			document.cookie = `${CTAG_NEWS}${PRESENT_NEWS}`;
+        	});
+
+
+		</script>
 	</body>
 
 </html>
